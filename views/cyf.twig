@@ -1,0 +1,61 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="cyf-page">
+    <div class="cyf-page-content">
+        <div class="container">
+            <h1 class="heading">{{acf.main_title}}</h1>
+            <div class="select-wrap">
+                <div class="step">
+                    <h4 class="step-heading step-heading-1">{{acf.select_first_title}}</h4>
+                    <p class="show-input-check-business">{{acf.select_first_description}}</p>
+                    <button class="edit-checked" type="button">Edit</button>
+                    <div class="format-options format-options-1">
+                        {% for option in acf.screen_first_options %}
+                            <div class="format-option">
+                                <img src="{{ option.image.url }}" alt="{{ option.image.alt }}">
+                                <div class="check-row">
+                                    <input type="radio" id="{{ option.id }}" name="format" value="{{ option.value }}">
+                                    <label for="{{ option.id }}">{{ option.label }}</label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="next-step">
+                        <button type="button" class="button-1">{{acf.selest_first_button}}</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="select-wrap mgt30">
+                <div class="step">
+                    <h4 class="step-heading step-heading-2">{{acf.select_second_title}}</h4>
+                    <p class="show-input-check-marketing">{{acf.select_second_description}}</p>
+                    <button class="edit-checked edit-checked-2" type="button">Edit</button>
+                    <div class="format-option-2">
+                        {% for option in acf.slect_second_options %}
+                            <div class="check-row">
+                                <input type="radio" id="select-{{ loop.index }}" name="marketing_goal" value="{{ option.goal }}">
+                                <label for="select-{{ loop.index }}">
+                                    <span class="title">{{ option.goal }}</span>
+                                </label>
+                                <span class="desc">
+                                    <span class="subtitle">Video type:</span>
+                                    <span class="sub-desc">{{ option.video_type }}</span>
+                                </span>
+                                <span class="desc">
+                                    <span class="subtitle">Duration:</span>
+                                    <span class="sub-desc">{{ option.duration }}</span>
+                                </span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="next-step next-step-2">
+                        <button type="button" class="button-2" disabled>{{acf.select_second_button}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
